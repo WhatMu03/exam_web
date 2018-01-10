@@ -1,0 +1,421 @@
+.main .secondaryMenu {
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.main .mainCont {
+    padding-left:144px;
+}
+
+
+
+.main .mainCont .system-name p {
+    font-size:16px;
+}
+
+.main .system-user i {
+    color:#fff;
+}
+
+/*主账户主页面*/
+.mainSerch {
+    padding-bottom:30px;
+    border-bottom:1px solid #E3E5E9;
+}
+
+
+.mainSerch .col-md-4 {
+    display: inline-block;
+    padding:0px 30px 10px;
+}
+
+.mainSerch > div.searchCont {
+    padding:30px 0 20px;
+}
+
+
+.mainCont .mainTable {
+    padding:0 30px;
+}
+
+.mainCont .mainTable .tableBtn {
+    padding:20px 0;
+}
+
+/* 添加子账户页面 */
+
+.main .mainCont .crumbs {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding:0 40px;
+    background-color: #fff;
+    box-shadow: 1px 0 4px #9e9e9f;
+    font-size:16px;
+    color: #333;
+}
+
+.main .mainCont .crumbs a {
+    font-size:14px;
+    color: #278FEB;
+    text-decoration: none;
+    line-height: 38px;
+}
+
+.main .mainCont .crumbs a i {
+    font-size:18px;
+    position: relative;
+    top:1px;
+}
+
+.main .mainCont .addFrom {
+    padding-top:60px;
+}
+
+.subList {
+    padding:20px 40px;
+    border-bottom:1px solid #E3E5E9;
+}
+
+.subList .subListIcon i {
+    font-size:48px;
+    color:#ccc;
+    margin-right:20px;
+}
+
+.subList .subListIcon  img {
+    width:60px;
+    height: auto;
+}
+
+.subList .subListinfo .subName{
+    font-size: 14px;
+    color: #333333;
+}
+.subListinfo  {
+    width:100%;
+    padding-left:72px;
+}
+.subNameList > div.subNameLi {
+    display: inline-block;
+    padding-top:16px;
+    font-size:14px;
+}
+
+.subNameList > div.subNameLi span {
+    display: inline-block;
+    min-width:80px;
+    text-align: right
+}
+
+
+.subList .titleInfo {
+    font-size: 16px;
+    color: #333;
+    /* padding:5px 0; */
+}
+
+.subList .titleInfo span {
+    font-size: 14px;
+    color: #666;
+    margin-left:6px;
+    font-weight:normal;
+
+}
+
+
+/* 添加成功，失败 */
+.addUserSuccess {
+    padding-top:72px;
+    margin:0 auto;
+    text-align: center
+}
+
+
+.addUserSuccess .icon  img{
+   width:auto;
+   height: 158px;
+}
+
+.addUserSuccess .icon.gray {
+    color:rgba(51,204,155,1)
+}
+
+.addUserSuccess .icon.red {
+    color:rgba(231, 95, 95, 1)
+}
+
+.addUserSuccess h2 {
+    font-size: 24px;
+    color: #666;
+    font-weight: normal;
+    margin-bottom:14px;
+}
+
+.addUserSuccess .addUserScont {
+    font-size: 16px;
+    color: #666;
+    line-height: 30px;
+}
+.tipUser {
+    font-size: 16px;
+    color: #000;
+    line-height: 80px;
+}
+
+.tipUser img {
+    float:left;
+    width:80px;
+    height: auto;
+    margin-top:10px;
+}
+
+/* 关联账户 */
+
+.relateUserIdCont {
+    padding:0 40px;  
+}
+
+.relateUserId {
+    border-bottom:1px solid #E3E5E9;
+}
+
+.relateUserId .relateUserIdList {
+    font-size: 14px;
+    color: #232323;
+    display: inline-block;
+    padding:20px 0;
+    min-width: 210px;
+}
+
+
+.relateUserId .relateUserIdList i {
+    margin-right:10px;
+}
+
+.relateUserSerch {
+    padding:20px 0 25px;
+    line-height: 30px;
+}
+
+.relateUserSerch .checkboxTab {
+    margin-top: 5px;
+}
+
+.relateUserIdCont .searchInput {
+    min-width:200px;
+}
+
+.relateCard,.addRelateCard {
+    width: 30%;
+    min-height: 90px;
+    background: #F4F3F6;
+    box-shadow: 0 1px 3px 0 #C8C8C9;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666666;
+    margin: 0 5% 25px 0;
+    float: left;
+}
+
+.relateCard {
+    padding:18px 50px;
+}
+
+.relateCard:nth-child(3){
+    margin-right:0;
+}
+
+.relateCard .icon-duicuo- {
+    position: absolute;
+    right: -7px;
+    top: -8px;
+    color:#FF5151;
+}
+
+.relateCard .relateCardR a{
+    display: block;
+    color: #278FEB;
+    text-decoration:underline;
+}
+
+.relateCard .checkboxTab {
+    margin-left:3px;
+}
+
+.addRelateCard {
+    text-align: center  
+}
+.addRelateCard i {
+    font-size:70px;
+    color:#ccc;
+    transform:rotate(45deg);
+    display:inline-block;
+    line-height: 90px;
+}
+
+
+/* 发表文章 */
+.pubArticlesCont {
+    padding:26px 60px 34px;
+}
+
+/* 帮助中心 */
+.helpCont .searchCont {
+    padding:22px 32px 8px 0;
+}
+
+
+.helpContList {
+    padding:0 32px;  
+}
+
+.helpContListTitle {
+    background: #F3F7F9;
+    border-top:1px solid #E3E5E9;
+    height: 40px;
+    /* line-height: 40px; */
+    display: flex;
+    justify-content: center;
+}
+
+.helpContListTitle .checkboxTab {
+    padding-left:20px;
+    align-self: center;
+    display: flex;
+}
+
+.helpContListTitle .helpListCont  {
+    font-size:14px;
+    color:#666;
+    display: flex;
+    align-items: center;
+}
+
+.helpContListTitle .helpContEdit  {
+    font-size:14px;
+    color:#666;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+
+.helpLIst {
+    display: flex;
+    border-bottom:1px solid #E3E5E9;
+}
+
+.helpLIst .checkboxTab  {
+    padding-left:20px;
+    align-self: center;
+    display: flex;
+}
+
+.helpLIst .helpListCont  {
+    padding:13px 0;
+
+}
+
+.helpLIst .helpListCont h2 {
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+    padding-bottom:10px;
+}
+
+.helpLIst .helpListCont p {
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+}
+
+.helpLIst .helpListCont .helpTime {
+    font-size: 14px;
+    color: #999;
+    padding-top:10px;
+}
+
+.helpLIst .helpContEdit  {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.helpLIst .helpContEdit i {
+    font-size:24px;
+    color:#278FEB;
+}
+
+/* 文章示例 */
+.articleCont {
+    padding:0 80px;
+}
+
+.articleCont .articleContTitle {
+    padding:24px 0;
+    border-bottom:1px solid  #E3E5E9;
+}
+
+.articleCont .articleContTitle span {
+    min-width: 50px;
+    display: inline-block;
+    margin-right:40px;
+    font-size: 12px;
+    color: #999;
+}
+
+.articleCont .articleContTitle span i {
+    font-size:20px;
+    position: relative;
+    top:2px;
+    margin-right:6px;
+}
+
+.articleCont .article {
+    padding:24px 0  102px;
+}
+
+.articleCont .article p{
+    margin-bottom:24px;
+    font-size: 14px;
+    color: #333;
+}
+
+.articleCont .article .evaBtn  a {
+    font-size:14px;
+    display: inline-block;
+    width:50px;
+    height: 50px;
+}
+
+.articleCont .article .articleImg {
+    width:auto;
+    height: 310px;
+    text-align: center
+}
+.articleCont .article  .evaBtn{
+    text-align: center
+}
+
+
+.article .path {
+    border-top:1px solid  #E3E5E9;
+    padding-top:20px;
+    margin-top:42px;
+}
+
+.article .path a {
+    font-size: 14px;
+    color: #2890EC;
+    text-decoration:underline
+}
+
+.mt60 {
+    margin-top:60px;
+}
+
+.mr60 {
+    margin-right:60px;
+}

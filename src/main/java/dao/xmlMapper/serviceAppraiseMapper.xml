@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IServiceAppraiseDao">
+    <!-- list-->
+    <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map">
+        select * from service_appraise
+        <include refid="condition"/>
+        <include refid="orderBy"/>
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- Count -->
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) from service_appraise
+        <include refid="condition"/>
+    </select>
+
+    <!-- insert -->
+    <select id="insert" parameterType="java.util.Map">
+		insert into service_appraise (appraiseObj,appraiseObjNo,suggest,score,appraiserNo,appraiseTime) 
+		VALUES(#{appraiseObj},#{appraiseObjNo},#{suggest},#{score},#{appraiserNo},#{appraiseTime}) 
+    </select>
+
+	<!-- 获取具体事件的评价数量 -->
+    <select id="eventCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) 
+        from service_appraise a 
+        left join event_info b on a.appraiseObjNo = b.eventNo and appraiseObj = '事件'
+        <where>
+        	1 = 1 and b.id = #{id}
+        </where>
+    </select>
+
+	<!-- 获取具体需求的评价数量 -->
+    <select id="requestCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) 
+        from service_appraise a 
+        left join request_info b on a.appraiseObjNo = b.requestNo and appraiseObj = '需求'
+        <where>
+        	1 = 1 and b.id = #{id}
+        </where>
+    </select>
+
+	<!-- 已评价list -->
+    <select id="haveEvaluated" resultType="java.util.Map" parameterType="java.util.Map">
+		select '事件' as appraiseObj,eventNo as appraiseObjNo,createTime,description 
+		from event_info 
+		where eventNo in (
+		select appraiseObjNo from service_appraise where appraiseObj = '事件' and appraiserNo = #{appraiserNo}
+		) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+		union all
+		select '需求' as appraiseObj,requestNo as appraiseObjNo,createTime,description 
+		from request_info 
+		where requestNo in (
+		select appraiseObjNo from service_appraise where appraiseObj = '需求' and appraiserNo = #{appraiserNo}
+		) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+        LIMIT #{offset}, #{limit}
+    </select>
+
+	<!-- 已评价count -->
+    <select id="haveEvaluatedCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+    	select count(1) from (
+			select '事件' as appraiseObj,eventNo as appraiseObjNo,createTime,description 
+			from event_info 
+			where eventNo in (
+			select appraiseObjNo from service_appraise where appraiseObj = '事件' and appraiserNo = #{appraiserNo}
+			) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+			union all
+			select '需求' as appraiseObj,requestNo as appraiseObjNo,createTime,description 
+			from request_info 
+			where requestNo in (
+			select appraiseObjNo from service_appraise where appraiseObj = '需求' and appraiserNo = #{appraiserNo}
+			) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+		) t 
+    </select>
+
+	<!-- 待评价list -->
+    <select id="notEvaluated" resultType="java.util.Map" parameterType="java.util.Map">
+    	select * from (
+			select '事件' as appraiseObj,eventNo as appraiseObjNo,createTime,description 
+			from event_info 
+			where eventNo not in (
+			select appraiseObjNo from service_appraise where appraiseObj = '事件' and appraiserNo = #{appraiserNo}
+			) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+			and flowStatus = '关闭'
+			union all
+			select '需求' as appraiseObj,requestNo as appraiseObjNo,createTime,description 
+			from request_info 
+			where requestNo not in (
+			select appraiseObjNo from service_appraise where appraiseObj = '需求' and appraiserNo = #{appraiserNo}
+			) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+			and reqStatus = '已发放'
+        ) t order by createTime desc
+        LIMIT #{offset}, #{limit}
+    </select>
+
+	<!-- 待评价count -->
+    <select id="notEvaluatedCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+    	select count(1) from (
+			select '事件' as appraiseObj,eventNo as appraiseObjNo,createTime,description 
+			from event_info 
+			where eventNo not in (
+			select appraiseObjNo from service_appraise where appraiseObj = '事件' and appraiserNo = #{appraiserNo}
+			) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+			and flowStatus = '关闭'
+			union all
+			select '需求' as appraiseObj,requestNo as appraiseObjNo,createTime,description 
+			from request_info 
+			where requestNo not in (
+			select appraiseObjNo from service_appraise where appraiseObj = '需求' and appraiserNo = #{appraiserNo}
+			) and customerNo in (select customerNo from sub_acco_info where loginNo = #{appraiserNo})
+			and reqStatus = '已发放'
+		) t 
+        <where>
+            1 = 1
+            <if test="appraiseObj != null and appraiseObj != ''">
+                and appraiseObj = #{appraiseObj}
+            </if> 
+        </where>
+    </select>
+     
+    <!-- 排序 -->
+    <sql id="orderBy">
+        <if test="sort!= null  and sort != ''  ">
+            ORDER BY ${sort}
+        </if>
+        <if test="order=='asc'  ">
+            asc
+        </if>
+        <if test="order=='desc'  ">
+            desc
+        </if>
+    </sql>
+    
+    <!-- 查询条件 -->
+    <sql id="condition">
+        <where>
+            1 = 1
+            <if test="appraiseObj != null and appraiseObj != ''">
+                and appraiseObj = #{appraiseObj}
+            </if>
+            <if test="appraiseObjNo != null and appraiseObjNo != ''">
+                and appraiseObjNo = #{appraiseObjNo}
+            </if>
+            <if test="appraiserNo != null and appraiserNo != ''">
+                and appraiserNo = #{appraiserNo}
+            </if>
+        </where>
+    </sql>
+
+
+</mapper>
+
+

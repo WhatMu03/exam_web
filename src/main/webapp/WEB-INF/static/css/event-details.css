@@ -1,0 +1,110 @@
+body>.first-register{
+	margin: 0;
+    padding-top: 45px;
+    position: relative;
+    height: 100%;
+}
+.register-main .register-tip{
+	height: 100%;
+	background-color: #fff;
+	padding: 0;
+}
+.register-main{
+	background-color: #ecf2f6;
+	height: 100%;
+}
+.event-particulars{
+	height: 100%;
+	padding: 107px 0px 20px 0px;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+.event-number{
+	padding: 25px 90px 32px 83px;
+	border-bottom: 2px solid #f6f6f6;
+	position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+	background: #fff;
+	z-index: 2;
+}
+.event-number>i{
+	display: inline-block;
+    font-size: 60px;
+    color: #ededed;
+}
+.event-number>div{
+	display: inline-block;
+	padding-left: 56px;
+}
+.event-number>div>div>span{
+	font-size: 16px;
+    font-weight: bold;
+}
+.position-number{
+	margin-bottom: 8px;
+}
+.children-detail-show{
+	padding-top: 20px;
+	width: 100%;
+	overflow-y: auto;
+}
+.children-detail-show .w100{
+	width: 100%;
+	margin-bottom: 20px;
+	margin-top: 8px;
+}
+.children-detail-show .w100 label{
+	display: inline-block;
+    width: 11.2%;
+    text-align: right;
+	height:26px;
+	line-height: 26px;
+}
+.children-detail-show .w100 span{
+	display: inline-flex;
+    width: 88.8%;
+}
+.dispatched-status{
+	width: 91%;
+	background-color: #f2f6f8;
+	margin-top: 42px;
+}
+.line{
+	display: inline-block;
+	height: 20px;
+	width: 1px;
+	border-right: 1px solid #e4e6ea;
+	margin-top: 5px;
+	position: relative;
+	top: 6px;
+	margin: 0 5px 0 3px;
+}
+.children-detail-show .input-3-3{
+	display: inline-block;
+	width: 32.33%;
+	margin-bottom: 5px;
+}
+.icon-xiangqingyetubiao-2{
+	width: 50px;
+	position: absolute;
+}
+
+
+
+/* 404 */
+.errorPage {
+	text-align: center;
+	position: relative;
+	top:20%
+}
+
+.errorPage p {
+	color:#666;
+	font-size:24px;
+	padding:25px 0;
+}
+.btn-disabled{
+	background: #cccccc;
+	color: #fff;
+}

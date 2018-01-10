@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IRequestDao">
+	<!-- list-->
+    <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map" >
+		select *,reqStatus reqStatus_operate from request_info   
+        <include refid="condition"/>
+        ORDER BY important DESC,updateTime desc
+        LIMIT #{offset}, #{limit}
+    </select>
+    
+    <!-- Count -->
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select count(1) from request_info 
+        <include refid="condition"/>
+    </select> 
+    
+    <!-- Detail -->
+    <select id="selectDetail" resultType="java.util.Map" parameterType="java.util.Map" >
+        SELECT a.*,b.customerName,s.loginNo from request_info a
+        left join customer_info b on a.customerNo = b.customerNo
+        left join sub_acco_info s on b.customerNo = s.customerNo
+        <where>
+        	1 = 1
+            <if test="requestNo != null and requestNo != ''">
+                and a.requestNo = #{requestNo}
+            </if> 
+            <if test="id != null and id != ''">
+                and a.id = #{id}
+            </if>
+            <if test="loginNo != null and loginNo != ''">
+                and s.loginNo = #{loginNo}
+            </if>
+        </where>
+    </select> 
+    
+    <!-- 查询未解决需求   -->
+    <select id="unsolved" resultType="java.util.Map" parameterType="java.util.Map"> 
+    	select * from request_info
+        <where>
+        	1 = 1 and reqStatus != '已发放'
+			and customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+        </where>
+        order by updateTime desc
+    </select>
+
+    <!--需求置顶-->
+    <update id="top" parameterType="java.util.Map">
+        update request_info  set important = '1' where requestNo = #{requestNo}
+    </update>
+
+    <!--取消置顶-->
+    <update id="cancelTop" parameterType="java.util.Map">
+        update request_info  set important = '0' where requestNo = #{requestNo}
+    </update>
+
+	<!-- 排序 -->
+    <sql id="orderBy">
+        <if test="sort!= null  and sort != ''  ">
+            ORDER BY ${sort}
+        </if>
+        <if test="order=='asc'  ">
+            asc
+        </if>
+        <if test="order=='desc'  ">
+            desc
+        </if>
+    </sql>
+     
+     <!-- 查询条件 -->
+    <sql id="condition">
+        <where>
+            1 = 1 and customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+            <if test="requestNo != null and requestNo != ''">
+                and requestNo like CONCAT('%',#{requestNo},'%' ) 
+            </if>
+<!--             <if test="saleProductName != null and saleProductName != ''">
+                and saleProductName = #{saleProductName}
+            </if> -->
+            <if test="createTime !=null and createTime !='' and createTime[0] !=''">
+                <![CDATA[ and createTime >= #{createTime[0]} ]]>
+            </if>
+            <if test="createTime !=null and createTime !='' and createTime[1] !=''">
+                <![CDATA[ and createTime <= #{createTime[1]} ]]>
+            </if>
+            <if test="reqStatus != null and reqStatus != ''">
+                and reqStatus = #{reqStatus}
+            </if>
+            <if test="key != null and key != ''">
+                and (description like CONCAT('%',#{key},'%' ) or saleProductName like CONCAT('%',#{key},'%' ))
+            </if> 
+        </where>
+    </sql> 
+
+    <!-- 根据条件查询所有数据  -->
+    <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from request_info 
+        <where>
+            1 = 1 and customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+            <if test="idExp != null and idExp != ''"><!-- 此处idExp是一个表达式 -->
+                and id ${idExp}
+            </if> 
+        </where>
+    </select>
+     
+</mapper>
+
+

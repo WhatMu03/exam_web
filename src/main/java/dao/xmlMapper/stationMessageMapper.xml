@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IStationMessageDao">
+    <!-- 需求list-->
+    <select id="selectPageRequest" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        messageNo,
+        concat('需求编号',objNo,'的更新提醒') theme,
+        senderTime,
+        status
+        from station_message
+        <where>
+            1 = 1 and obj = '需求'
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+        order by status desc,senderTime desc
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- 需求Count -->
+    <select id="selectCountRequest" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) from station_message
+        <where>
+            1 = 1 and obj = '需求'
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+    </select>
+
+    <!-- 事件list-->
+    <select id="selectPageEvent" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        messageNo,
+        concat('事件编号',objNo,'的更新提醒') theme,
+        senderTime,
+        status
+        from station_message
+        <where>
+            1 = 1 and obj = '事件'
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+        order by status desc,senderTime desc
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- 事件Count -->
+    <select id="selectCountEvent" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) from station_message
+        <where>
+            1 = 1 and obj = '事件'
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+    </select>
+
+    <!-- 系统list-->
+    <select id="selectPageSystem" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        messageNo,
+        concat('系统编号',objNo,'的更新提醒') theme,
+        senderTime,
+        status
+        from station_message
+        <where>
+            1 = 1 and senderNo = '1'
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+        order by status desc,senderTime desc
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- 系统Count -->
+    <select id="selectCountSystem" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(1) from station_message
+        <where>
+            1 = 1 and senderNo = '1'
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+    </select>
+
+    <!-- Detail -->
+    <select id="selectDetail" resultType="java.util.Map" parameterType="java.util.Map">
+        select a.*,b.loginName 
+        from station_message a
+        left join sub_acco_info b on a.acceptorNo = b.loginNo
+        <where>
+            1 = 1 and a.messageNo = #{messageNo}
+            <if test="acceptorNo != null and  acceptorNo != ''">
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+    </select>
+
+    <!-- 更新短信状态 -->
+    <select id="updateStatus" parameterType="java.util.Map">
+        update station_message set status = '1'
+        <where>
+            1 = 1 and messageNo = #{messageNo}
+        </where>
+    </select>
+
+    <!-- 删除短信  -->
+    <select id="delete" parameterType="java.util.Map">
+        delete from station_message
+        <where>
+            1 = 1 and messageNo in
+            <foreach collection="messageNo" open="(" separator="," close=")" item="item">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!-- 设为已读  -->
+    <select id="setRead" parameterType="java.util.Map">
+        update station_message set status = '1'
+        <where>
+            1 = 1 and messageNo in
+            <foreach collection="messageNo" open="(" separator="," close=")" item="item">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!-- 根据条件查询所有数据  -->
+    <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from station_message
+        <where>
+            1 = 1 
+            <if test="messageNoExp != null and messageNoExp != ''"><!-- 此处messageNo是一个表达式 -->
+                and messageNo ${messageNoExp}
+            </if>
+            <if test="acceptorNo != null and acceptorNo != ''"> 
+                and acceptorNo = #{acceptorNo}
+            </if>
+        </where>
+    </select>
+
+    <!-- 排序 -->
+    <sql id="orderBy">
+        <if test="sort!= null  and sort != ''  ">
+            ORDER BY ${sort}
+        </if>
+        <if test="order=='asc'  ">
+            asc
+        </if>
+        <if test="order=='desc'  ">
+            desc
+        </if>
+    </sql>
+
+    <!-- 未读 -->
+    <select id="noRead" parameterType="java.util.Map" resultType="java.util.Map">
+	    select * from station_message  
+        <where>
+            1 = 1 and status = '0' and acceptorNo = #{loginNo}
+            <if test="obj != null and obj != ''"> 
+                and obj = #{obj}
+            </if>
+        </where>
+        order by senderTime desc
+    </select> 
+    
+    
+</mapper>
+
+

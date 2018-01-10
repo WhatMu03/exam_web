@@ -1,0 +1,100 @@
+/*按钮组  */
+.btn-collection {
+    padding-left:20px;
+}
+.btn-collection p {
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.btn-collection a {
+    margin:10px;
+}
+.btn{
+    display: inline-block;
+    padding:6px 26px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-decoration:none;
+}
+
+.btn:hover {
+    text-decoration: none;
+    color:#fff;
+}
+
+.btn.small {
+    padding:6px 12px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #15A3F9;
+    border-color: #15A3F9;
+}
+.btn-primary:hover {
+    background-color: #0A96EA;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-default:hover {
+    background-color: #F6F6FD;
+    color:#37495C;
+    border:1px solid  #15A3F9;
+}
+
+.btn-gray {
+    background: #85929E;
+    color: #FFf;
+}
+
+.btn-gray:hover {
+    background: #6f7a84;
+}
+
+
+
+.btn .iconfont  {
+    position: relative;
+    top:1px;
+}

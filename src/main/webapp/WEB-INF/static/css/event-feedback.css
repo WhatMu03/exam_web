@@ -1,0 +1,69 @@
+body>.first-page{
+	margin: 0;
+	position: relative;
+	height: 100%;
+	padding-left: 144px;
+	box-sizing: border-box;
+}
+.secondaryMenu{
+	position: absolute;
+    left: 0;
+}
+.w100{
+	width: 100%;
+}
+.look-details{
+	width: 215px;
+}
+.look-details li{
+	display: inline-block;
+	width: 103px;
+	height: 30px;
+	border:1px solid #c0cad2;
+	text-align: center;
+	line-height: 30px;
+	color: #999999;
+}
+.border-style-1{
+	border-radius: 5px 0 0 5px;
+}
+.border-style-2{
+	border-radius: 0 5px 5px 0;
+}
+.look-details .border-l-none{
+	border-left: none;
+}
+.look-details li.current-choice{
+	background: #2890ec;
+	color: #fff;
+	border: 1px solid #2890ec;
+}
+.feedback-tool{
+	padding:75px 35px 30px 35px;
+}
+.main-top{
+	position: fixed;
+}
+.pd-lr-35{
+	padding: 0 35px;
+}
+.pagination{
+	width: 100%;
+}
+
+/*表格样式*/
+.datagrid-header-check,.datagrid-cell-check{
+	width: 100%;
+}
+.datagrid-view2 .datagrid-header-inner .datagrid-htable{
+	width: 100%;
+}
+.first-page table{
+	border-collapse: inherit;
+	border-spacing: 0;
+	table-layout: auto;
+}
+/*td[field="theme"]>div,td[field="senderTime"]>div{*/
+	/*width: 100%;*/
+	/*box-sizing: border-box;*/
+/*}*/

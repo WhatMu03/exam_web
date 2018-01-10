@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="jquery-ui.css" />  
+<link rel="stylesheet" type="text/css" href="jquery.multiselect.css" />  
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="jquery.multiselect.js"></script>
+
+</head>
+<body>
+    <select id ="sela" title="Basic example" multiple="multiple" name="example-basic" size="5">
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+		<option value="V1">平安</option>
+		<option value="V2">泰山</option>
+    </select>
+	<input type="hidden" id="hids" value=""/>
+	<script>
+		$(function(){
+		    
+			$("select").multiselect({
+				noneSelectedText: "<center>=请选择=</center>",
+				checkAllText:    "全选",
+				uncheckAllText: "全不选",
+				selectedList:55
+			});				
+        });
+
+	</script>
+</body>
+</html>

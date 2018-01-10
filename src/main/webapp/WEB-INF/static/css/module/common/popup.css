@@ -1,0 +1,68 @@
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #e4e6ea;
+    border-radius: 6px;
+    outline: 0;
+    box-shadow: 0 0 5px rgba(140, 150, 167, 0.5);
+}
+
+.modal-header {
+    padding: 11px 8px 11px 18px;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 1px 0 4px #e4e6ea;
+}
+
+.modal-header .close {
+    margin-top: -4px;
+}
+
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(134,147,158,1);
+    text-shadow: 0 1px 0 #fff;
+}
+
+.close i {
+    font-size: 18px;
+}
+
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+    font-size:14px;
+    color: #000;
+    font-weight: normal;
+
+}
+
+.modal-body {
+    position: relative;
+    padding: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    padding: 15px;
+    justify-content:right;
+    justify-content: center;
+}
+
+
+
+.modal-body .form-group label.label {
+    font-size:14px;
+}

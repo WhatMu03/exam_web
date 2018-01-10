@@ -1,0 +1,57 @@
+.checkboxTab {
+    height: 20px;
+    position: relative;
+}
+
+
+.checkboxTab label.checkbox{
+    width:18px;
+    height: 18px;
+    border-radius: 2px;
+    background-color:#fff;
+    display: inline-block;
+    position: relative;
+    top:0;
+    left:0;
+    cursor: pointer;
+    border:1px solid #c0cad2 ;
+}
+
+.checkboxTab input[type="checkbox"] {
+    display: none;
+}
+
+
+.checkboxTab input:checked + label{
+    border-color: #2890ec;
+}
+
+
+
+.checkboxTab input:checked + label::after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    background: #2890ec;
+    transform: rotate(-45deg) translateY(-50%) translateX(50%);
+    position: absolute;
+    top: 13px;
+    left: 1px;
+}
+
+.checkboxTab input:checked + label::before{
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    background: #2890ec;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    top: 9px;
+    left: 0px;
+
+}

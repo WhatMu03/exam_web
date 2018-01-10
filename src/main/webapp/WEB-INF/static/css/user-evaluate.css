@@ -1,0 +1,94 @@
+body>.first-register{
+	margin: 0;
+    /*padding-top: 45px;*/
+    position: relative;
+    height: 100%;
+}
+.register-main .register-tip{
+	height: 100%;
+	background-color: #fff;
+	padding: 0;
+}
+.register-main{
+	background-color: #ecf2f6;
+	height: 100%;
+}
+.event-number{
+	padding: 33px 90px 27px 72px;
+	border-bottom: 2px solid #f6f6f6;
+	position: relative;
+}
+.event-number>i{
+	display: inline-block;
+    font-size: 60px;
+    color: #ededed;
+}
+.event-number>div{
+	display: inline-block;
+	padding-left: 77px;
+}
+.event-number>.position-number>span{
+	font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.event-number>.position-number>label{
+	margin-bottom: 3px;
+	color: #666666;
+	line-height: 18px;
+}
+.position-number>label,.position-number>span{
+	display: block;
+}
+.position-number>div{
+	display: flex;
+}
+.event-number > i{
+	position: absolute;
+	top: 23px;
+}
+.limit-width{
+	max-width: 750px;
+	line-height: 18px;
+}
+.read-details{
+	text-decoration: underline;
+	color: #2890ec;
+	position: absolute;
+	top: 40px;
+	right: 90px;
+}
+.edit-evaluated{
+	/*padding: 25px 75px;*/
+	padding: 10px 75px 0px 75px;
+}
+.edit-selection{
+	width: 100%;
+	height: 250px;
+	border:1px solid #c0cad2;
+	margin-top: 15px;
+}
+.evaluate-name{
+	margin-top: 36px;
+	position: relative;
+}
+.evaluate-name>label{
+	position: absolute;
+	top: 7px;
+	right: 0;
+}
+.icon-xiangqingyetubiao-3{
+	width: 65px;
+	height: 60px;
+	position: absolute;
+	top: 23px;
+}
+.w100{
+	width: 100%;
+}
+.request .main-top{
+	padding-left: 20px;
+}
+.register-main-pd{
+	padding: 60px 15px 15px 15px;
+}

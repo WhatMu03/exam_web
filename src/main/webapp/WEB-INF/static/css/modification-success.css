@@ -1,0 +1,34 @@
+body>.first-register {
+    margin: 0;
+    padding-top: 45px;
+    position: relative;
+    height: 100%;
+}
+.register-main {
+    background-color: #ecf2f6;
+    height: 100%;
+}
+.register-tip {
+    height: 100%;
+    background-color: #fff;
+    padding-top: 150px;
+}
+.tip-title {
+    border-bottom: 1px solid #e4e6ea;
+    padding: 15px;
+    font-size: 14px;
+}
+.modification-success{
+	text-align: center;
+}
+.skip-tip{
+	display: block;
+	margin-top: 15px;
+	color: #75b0f1;
+	text-decoration: underline;
+}
+.modification-success h1{
+	color: #959595;
+    margin-top: 15px;
+    font-size: 20px;
+}

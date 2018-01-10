@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IEventDao">
+    <!--list-->
+    <select id="selectPage" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT *,flowStatus flowStatus_operate from event_info 
+        <include refid="selectCondition"/>
+        order by updateTime desc
+        LIMIT #{offset} , #{limit}
+    </select>
+
+    <!--count-->
+    <select id="selectCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM event_info
+        <include refid="selectCondition"/>
+    </select>
+
+    <!--Detail-->
+    <select id="selectDetail" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT a.*,b.customerName,s.loginNo from event_info a
+        left join customer_info b on a.customerNo = b.customerNo
+        left join sub_acco_info s on s.customerNo = a.customerNo
+        <where>
+            1 = 1  
+            <if test="eventNo != null and eventNo != '' ">
+                and a.eventNo = #{eventNo}
+            </if>
+            <if test="id != null and id != '' ">
+                and a.id = #{id}
+            </if>
+            <if test="loginNo != null and loginNo != ''">
+                and s.loginNo = #{loginNo}
+            </if>
+        </where>
+    </select> 
+
+    <!--查询子账户详情-->
+    <select id="selectSubAccount" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT * from sub_acco_info
+        <where>
+            1=1 and loginNo = #{loginNo}
+        </where>
+    </select>
+
+    <!--查询客户详情-->
+    <select id="selectCustomer" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT * from customer_info
+        <where>
+            1=1 AND customerNo = #{customerNo}
+        </where>
+    </select>
+    
+    <!--新建事件初始化-->
+    <select id="selectFormInit" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        c.customerName,
+        a.customerNo,
+        a.loginName,
+        a.mobile,
+        a.email
+        from sub_acco_info a
+        LEFT JOIN customer_info c on a.customerNo = c.customerNo
+        <where>
+            1 = 1 and
+            <if test="loginNo != null and loginNo != '' ">
+                a.loginNo = #{loginNo}
+            </if>
+        </where>
+    </select>
+
+    <sql id="selectCondition">
+        <where>
+            1 = 1 and customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+            <if test="eventNo !=null and eventNo !='' ">
+                AND eventNo like CONCAT('%',#{eventNo},'%' ) 
+            </if>
+            <if test="saleProductName !=null and saleProductName !='' ">
+                and saleProductName = #{saleProductName}
+            </if> 
+            <if test="createTime !=null and createTime !='' and createTime[0] !=''">
+                <![CDATA[ and createTime >= #{createTime[0]} ]]>
+            </if>
+            <if test="createTime !=null and createTime !='' and createTime[1] !=''">
+                <![CDATA[ and createTime <= #{createTime[1]} ]]>
+            </if>
+            <if test="type != null and type != '' ">
+                and type = #{type}
+            </if>
+            <if test="flowStatus != null and flowStatus != '' ">
+                and flowStatus = #{flowStatus}
+            </if>
+            <if test="key != null and key != '' ">
+                and (eventNo LIKE CONCAT('%',#{key},'%') or eventTitle LIKE CONCAT('%',#{key},'%') or solution LIKE
+                CONCAT('%',#{key},'%'))
+            </if>
+        </where>
+    </sql>
+
+    <!--新增事件-->
+    <insert id="insert" parameterType="java.util.Map" >
+      INSERT into event_info (eventNo,eventTitle,type,description,eventSource,dataSource,customerNo,saleProductName,tecProductName,version,
+      submitterName,email,mobile,phone,occurDateTime,createTime,dealingUserName,acceptDateTime,solution,responseLimitDatetime,flowStatus,
+      endStatus,updateTime)
+      VALUES(null,#{eventTitle},#{type},#{description},#{eventSource},'web',#{customerNo},#{saleProductName},'',
+      '',#{loginName},#{email},#{mobile},'',#{occurDateTime},now(),#{dealingUserName},'','','','新增','0',now())
+    </insert>
+
+    <!-- 查询新增那条数据id -->
+    <select id="maxId" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT max(id) from event_info
+    </select>
+    
+    <!-- 根据id查询数据  -->
+    <select id="selectById" resultType="java.util.Map" parameterType="java.lang.Integer">
+        SELECT * from event_info 
+        <where>
+            1=1 and id = #{id}
+        </where>
+    </select>
+    
+    <!-- 根据id删除数据  -->
+    <select id="deleteById" resultType="java.util.Map" parameterType="java.lang.Integer">
+        delete from event_info 
+        <where>
+            1=1 and id = #{id}
+        </where>
+    </select>
+    
+    <!-- 获取固定月所有事件  -->
+    <select id="monthEvent" resultType="java.util.Map" parameterType="java.util.Map">
+    	select SUBSTRING(createTime,9,2) day,eventNo,eventTitle from event_info  
+        <where>
+ 			customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+ 			and createTime LIKE CONCAT(#{createTime},'%') 
+        </where>
+    </select>
+    
+    <!-- 查询未解决事件   -->
+    <select id="unsolved" resultType="java.util.Map" parameterType="java.util.Map"> 
+    	select * from event_info
+        <where>
+        	1 = 1 and flowStatus != '关闭'
+			and customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+        </where>
+        order by updateTime desc
+    </select>
+
+    <!-- 根据条件查询所有数据  -->
+    <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from event_info 
+        <where>
+            1 = 1 and customerNo in (select customerNo from sub_acco_info where loginNo = #{loginNo})
+            <if test="idExp != null and idExp != ''"><!-- 此处idExp是一个表达式 -->
+                and id ${idExp}
+            </if> 
+        </where>
+    </select>
+</mapper>

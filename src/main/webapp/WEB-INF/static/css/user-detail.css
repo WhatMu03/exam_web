@@ -1,0 +1,91 @@
+body>.first-register {
+   	margin: 0;
+    position: relative;
+    height: 100%;
+}
+.register-main {
+    background-color: #ecf2f6;
+    height: 100%;
+}
+.register-tip {
+    height: 100%;
+    background-color: #fff;
+    padding: 80px 100px;
+}
+.tip-title {
+    border-bottom: 1px solid #e4e6ea;
+    padding: 15px;
+    font-size: 14px;
+}
+.bac-white{
+	background-color: #fff;
+}
+.children-ID label{
+	display: inline-block;
+	width: 10%;
+	text-align: right;
+}
+.children-name{
+	font-size: 14px;
+	font-weight: bold;
+}
+.status-icon{
+	display: inline-block;
+	width: 45px;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 10px;
+	color: #fff;
+	text-align: center;
+	margin-left: 5px;
+}
+.bac-green{
+	background-color: #33cc9b;
+}
+.bac-red{
+	background-color: #e75f5f;
+}
+.children-mr{
+	margin-bottom: 20px;
+}
+.set-marL{
+	margin-left: 7%;
+}
+.register-main > div{
+	margin-bottom: 20px;
+}
+.signIn-password{
+	padding: 20px 40px 20px 20px;
+}
+.children-detail-show{
+	margin-top: 15px;
+}
+.children-detail-show > div{
+	display: inline-block;
+	width: 33%;
+	margin-bottom: 20px;
+}
+.children-detail-show > div > label{
+	display: inline-block;
+	width: 25%;
+	text-align: right;
+	/*white-space: nowrap;
+	text-overflow: ellipsis;
+    overflow: hidden;*/
+}
+.register-main>div{
+	padding: 35px 38px;
+}
+.register-main>div.children-detail,.register-main>div.signIn-password{
+	padding-bottom: 23px;
+	padding-top: 22px;
+}
+.signIn-password h2{
+	margin-bottom: 22px;
+}
+.w100{
+	width: 100%;
+}
+.register-main-pd{
+	padding: 60px 15px 15px 15px;
+}

@@ -1,0 +1,111 @@
+body>.first-page{
+	margin: 0;
+	height: 100%;
+}
+.page-background{
+	background: #ecf2f6;
+}
+.secondaryMenu{
+	position: absolute;
+    left: 0;
+    top: 0;
+}
+.first-page{
+	padding-left: 144px;
+	position: relative;
+}
+.main-right{
+	position: relative;
+	height: 100%;
+	padding-top: 45px;
+}
+.main-right .main-top{
+	position: fixed;
+	top: 0;
+	left: 144px;
+	z-index: 3;
+}
+.w100{
+	width: 100%;
+}
+.page-message{
+	/*background-color: #ecf2f6;*/
+	height: 100%;
+}
+.at-issue{
+	width: 49%;
+	position: relative;
+	height: 100%;
+	padding-top: 34px;
+
+}
+.issue-tab{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.at-issue button{
+	padding: 3px 10px;
+}
+.at-issue .tab-page{
+	width: 100%;
+}
+.new-add{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #2890ec;
+}
+.tab-div{
+	border: 1px solid #c0cad2;
+	background-color: #fff;
+	overflow-y: auto;
+	padding: 10px 17px 0 24px;
+	height: 100%;
+    box-sizing: border-box;
+}
+.at-issue .required-solved{
+	width: 100%;
+}
+.retroaction-message{
+	width: 49%;
+	height: 100%;
+	position: relative;
+}
+.retroaction-message .tab-page{
+	width: 100%;
+	display: flex;
+}
+.retroaction-message .tab-page li{
+	width: 24.78%;
+	/*height: 100%;*/
+	position: relative;
+    bottom: -2px;
+}
+.show-message{
+	border:1px solid #c0cad2;
+	height: 22vh;
+	overflow-y: auto;
+	background-color: #fff;
+	padding: 15px 0 0 25px;
+}
+.show-message .unread-message{
+	width: 100%;
+	box-sizing: border-box;
+	padding-bottom: 15px;
+	position: relative;
+}
+.position-Ab{
+	position: absolute;
+	right: 10px;
+}
+.show-message .pd-t{
+	padding-top: 10px;
+}
+.div2{
+	width: 100%;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}

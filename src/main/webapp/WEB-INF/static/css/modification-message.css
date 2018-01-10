@@ -1,0 +1,90 @@
+body>.first-register {
+    margin: 0;
+    padding-top: 45px;
+    height: 100%;
+}
+.first-register .main-top{
+    top:0;
+}
+.register-main {
+    background-color: #ecf2f6;
+    height: 100%;
+}
+.register-tip {
+    min-height: 26.2rem;
+    background-color: #fff;
+    padding: 70px 150px 0 150px;
+    height: 100%;
+}
+.tip-title {
+    border-bottom: 1px solid #e4e6ea;
+    padding: 0 0 23px 21px;
+    font-size: 14px;
+}
+.form-edit{
+	padding-left: 5px;
+}
+.modification-form{
+    margin-top: 35px;
+}
+.modification-form label{
+    width: 23%;
+}
+.needIcon{
+    color: #ee9494;
+}
+.tool-btn{
+    padding-left: 24%;
+    padding-top: 8px;
+}
+.modification-form input.form-control{
+    width: 29.5%;
+    padding: 0;
+    height: 28px;
+    padding-left: 10px;
+}
+.modification-form>div{
+    margin-bottom: 27px;
+}
+.w100{
+    width: 100%;
+}
+.validate-error{
+    width: 29.5%;
+    box-sizing: border-box;
+}
+.success-icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../../static/images/success-icon.png");
+    margin-top: 3px;
+    margin-left: 10px;
+}
+.set-postion{
+    position: relative;
+}
+.password-tip{
+    position: absolute;
+    left: 55%;
+    top: -20px;
+}
+.password-error{
+    width: 165px;
+    padding: 5px;
+    background: #e8eff3;
+    margin-left: 30px;
+    position: relative;
+}
+.trangle{
+    display: inline-block;
+    width:0;
+    height:0;
+    border-width:10px 10px 10px 0;
+    border-style:solid;
+    border-color:transparent #e8eff3 transparent transparent;/*透明 灰 透明 透明 */
+    margin:40px auto;
+    position: absolute;
+    left: -9px;
+    top: -18%;
+}

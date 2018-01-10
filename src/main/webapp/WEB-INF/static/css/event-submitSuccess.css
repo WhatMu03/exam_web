@@ -1,0 +1,66 @@
+body>.first-page{
+	margin: 0;
+}
+.secondaryMenu{
+	position: absolute;
+	left: 0;
+}
+.first-page{
+	padding-left: 144px;
+}
+.page-message{
+	background-color: #ecf2f6;
+}
+.tc h1{
+	color: #959595;
+	margin-top: 8px;
+}
+.submit-result{
+	margin: 30px 220px;
+	width: 60%;
+	/*margin-left: 220px;*/
+	height: 130px;
+	background-color: #e8eff3;
+	padding: 32px 29px;
+}
+.submit-result>p{
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+.submit-result>div>label{
+	display: inline-block;
+	margin-right: 40px;
+}
+.submitSuccess-ivon-T{
+	margin-top: 44px;
+}
+
+
+.submit-error h2 {
+	font-size:16px;
+	font-weight: normal;
+	text-align: left;
+	color:#333;
+}
+
+.submit-error p {
+	padding-left:138px;
+	color:#666;
+	margin-bottom:6px;
+}
+
+.submit-error p.title {
+	font-size:14px;
+	font-weight: 700;
+	color: #8a8a8a;
+	margin-top:40px;
+}
+
+.submit-error p i {
+	color:#fb4f4f;
+	font-size:20px;
+	float: left;
+	line-height: 20px;
+
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.ICustProDao"> 
+    <!-- 查询客户产品关系表 -->
+    <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+        select saleProductCode,saleProductName from customer_product
+        <where>
+            1 = 1 and status != 'D'
+            <if test="customerNo != null and customerNo != ''">
+                and customerNo = #{customerNo}
+            </if> 
+            <if test="saleProductCode != null and saleProductCode != ''">
+                and saleProductCode = #{saleProductCode}
+            </if> 
+            <if test="saleProductName != null and saleProductName != ''">
+                and saleProductName = #{saleProductName}
+            </if> 
+            <if test="loginNo != null and loginNo != ''">
+            	and customerNo in (SELECT customerNo from sub_acco_info where loginNo = #{loginNo})
+            </if> 
+        </where>
+    </select>
+
+</mapper> 
+
+
+

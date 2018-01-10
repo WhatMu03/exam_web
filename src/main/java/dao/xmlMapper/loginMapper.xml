@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.ILoginDao">
+    <!--用户登录-->
+    <select id="checkUser" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * FROM sub_acco_info
+        <where>
+            sign = '0' and loginNo = #{loginNo} AND password = #{password}
+        </where>
+    </select>
+
+    <!--查询子账户信息-->
+    <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * FROM sub_acco_info where sign = '0' and loginNo = #{loginNo}
+    </select>
+
+    <!--更新最近一次登录时间--> 
+    <update id="update" parameterType="java.util.Map">
+        UPDATE sub_acco_info set lastLoginTime = #{lastLoginTime} 
+        WHERE loginNo = #{loginNo}
+    </update>
+
+    <!--锁定--> 
+    <update id="updateStatus" parameterType="java.util.Map">
+        UPDATE sub_acco_info set lockTime = #{lockTime} ,status = #{status}
+        WHERE loginNo = #{loginNo}
+    </update>
+
+</mapper>

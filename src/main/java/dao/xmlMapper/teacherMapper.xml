@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.ITeacherDao">
+    <!--list-->
+    <select id="selectPage" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * from l_user
+        <include refid="selectCondition"/>
+        order by name desc
+        LIMIT #{offset} , #{limit}
+    </select>
+
+    <!--count-->
+    <select id="selectCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM l_teacher
+        <include refid="selectCondition"/>
+    </select>
+
+    <sql id="selectCondition">
+        <where>
+            user_type = 1
+            <if test="code !=null and code !='' ">
+                AND `code` like CONCAT('%',#{code},'%' )
+            </if>
+            <if test="name !=null and name !='' ">
+                AND `name` like CONCAT('%',#{name},'%' )
+            </if> 
+            <if test="sex !=null and sex !='' ">
+                AND sex = #{sex}
+            </if>
+        </where>
+    </sql>
+
+    <!--新增事件-->
+    <insert id="insert" parameterType="java.util.Map" >
+      INSERT into l_user (`code`,password,`name`,sex,user_type)
+      VALUES(#{code},#{password},#{name},#{sex},1)
+    </insert>
+    
+    <!-- 根据id删除数据  -->
+    <select id="deleteById" resultType="java.util.Map" parameterType="java.lang.Integer">
+        delete from l_user
+        <where>
+            1=1 and id = #{id}
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IHelpDao"> 
+	<!-- 热门list -->
+    <select id="hotPage" resultType="java.util.Map" parameterType="java.util.Map" >
+		select * from help_center
+        <include refid="condition"/>
+		order by click desc 
+        LIMIT 0 , 5
+    </select> 
+      
+	<!-- 最新list -->
+    <select id="newPage" resultType="java.util.Map" parameterType="java.util.Map" >
+		select * from help_center
+        <include refid="condition"/>
+		order by createTime desc 
+        LIMIT 0 , 5
+    </select>   
+      
+	<!-- 常见list -->
+    <select id="commonPage" resultType="java.util.Map" parameterType="java.util.Map" >
+		select * from help_center 
+        <where>
+        	1 = 1
+            <if test="key != null and key != ''">
+                and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+            <if test="common != null and common != ''">
+                and common = #{common}
+            </if>  
+        </where>
+        LIMIT #{offset}, #{limit}
+    </select>   
+    
+    <!-- 常见Count -->
+    <select id="commonCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+		select count(1) from help_center 
+        <where>
+        	1 = 1
+            <if test="key != null and key != ''">
+                and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+            <if test="common != null and common != ''">
+                and common = #{common}
+            </if>  
+        </where>
+    </select>  
+	
+	<!-- list-->
+    <select id="selectPage" resultType="java.util.Map" parameterType="java.util.Map" > 
+    	select a.*,b.id new1,c.id hot from help_center a
+		left join (  
+		select id from help_center 
+        <where>
+        	1 = 1 
+            <if test="key != null and key != ''">
+           		and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+        </where>
+		order by createTime desc
+		limit 0,5
+		) b on a.id = b.id
+		left join (  
+		select id from help_center 
+        <where>
+        	1 = 1 
+            <if test="key != null and key != ''">
+           		and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+        </where>
+		order by click desc
+		limit 0,5
+		) c on a.id = c.id 
+        <include refid="condition"/> 
+        LIMIT #{offset}, #{limit}
+    </select>  
+    
+    <!-- Count -->
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    	select count(1) from help_center a
+		left join (  
+		select id from help_center 
+        <where>
+        	1 = 1 
+            <if test="key != null and key != ''">
+           		and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+        </where>
+		order by createTime desc
+		limit 0,5
+		) b on a.id = b.id
+		left join (  
+		select id from help_center 
+        <where>
+        	1 = 1 
+            <if test="key != null and key != ''">
+           		and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+        </where>
+		order by click desc
+		limit 0,5
+		) c on a.id = c.id 
+        <include refid="condition"/> 
+    </select>  
+    
+    <!-- Detail -->
+    <select id="selectDetail" resultType="java.util.Map" parameterType="java.util.Map" >
+		select * from help_center
+        <where>
+        	1 = 1 and id = #{id} 
+        </where>
+    </select>   
+    
+     <!-- 删除  -->
+    <select id="delete" parameterType="java.util.Map" >
+    	delete from help_center
+        <where>
+        	1 = 1 and id in
+            <foreach collection="id" open="(" separator="," close=")" item="item">
+                #{item}
+            </foreach>
+        </where> 
+    </select>  
+    
+     <!-- 插入 -->
+    <select id="insert" parameterType="java.util.Map" >
+		insert into help_center(title,introduce,content,common,createTime,good,bad,click)
+		VALUES(#{title},#{introduce},#{content},${common},#{createTime},0,0,0)
+    </select>    
+    
+     <!-- 更新 -->
+    <select id="update" parameterType="java.util.Map" >
+    	update help_center set title = ${title},introduce = ${introduce},content = ${content},common = ${common},createTime = ${createTime}
+        <where>
+        	1 = 1 and id = #{id} 
+        </where>
+    </select>   
+    
+     <!-- 赞 -->
+    <select id="good" parameterType="java.util.Map" >
+    	update help_center set good = good ${numExp}
+        <where>
+        	1 = 1 and id = #{id} 
+        </where>
+    </select>    
+    
+     <!-- 踩 -->
+    <select id="bad" parameterType="java.util.Map" >
+    	update help_center set bad = bad ${numExp}
+        <where>
+        	1 = 1 and id = #{id} 
+        </where>
+    </select>     
+    
+     <!-- 点击量 -->
+    <select id="click" parameterType="java.util.Map" >
+    	update help_center set click = click + 1 
+        <where>
+        	1 = 1 and id = #{id} 
+        </where>
+    </select>      
+    
+    <!-- 刚插入的数据 -->
+    <select id="maxId" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select max(id) id from help_center 
+    </select> 
+     
+     <!-- 查询条件 -->
+    <sql id="condition">
+        <where>
+        	1 = 1
+            <if test="key != null and key != ''">
+                and (title like CONCAT('%',#{key},'%' ) or introduce like CONCAT('%',#{key},'%' ))
+            </if>  
+        </where>
+    </sql>   
+
+    <!-- 根据条件查询所有数据  -->
+    <select id="select" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from help_center 
+        <where>
+        	1 = 1
+            <if test="idExp != null and idExp != ''"><!-- 此处idExp是一个表达式 -->
+                and id ${idExp}
+            </if> 
+        </where>
+    </select>
+    
+    <!-- 下面是明细表 --> 
+    
+    <!-- 查询明细表符合条件的数据  -->
+    <select id="select_detail" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from help_center_detail 
+        <where> 
+        	1 = 1
+            <if test="loginNo != null and loginNo != ''"> 
+            	and loginNo = #{loginNo}
+            </if>  
+            <if test="help_center_id != null and help_center_id != ''"> 
+            	and help_center_id = #{help_center_id}
+            </if>  
+        </where>
+    </select>
+    
+    <!-- 明细表数据插入  -->
+    <select id="insert_detail" parameterType="java.util.Map">
+        insert into help_center_detail (help_center_id,loginNo,status)
+        values (#{help_center_id},#{loginNo},#{status}) 
+    </select>
+    
+    <!-- 明细表数据更新  -->
+    <select id="update_detail" parameterType="java.util.Map">
+        update help_center_detail set status = #{status}
+        <where> 
+        	1 = 1
+            <if test="loginNo != null and loginNo != ''"> 
+            	and loginNo = #{loginNo}
+            </if>  
+            <if test="help_center_id != null and help_center_id != ''"> 
+            	and help_center_id = #{help_center_id}
+            </if>   
+        </where>
+    </select>
+</mapper>
+
+

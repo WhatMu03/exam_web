@@ -1,0 +1,162 @@
+/*è¿›åº¦æ¡start*/
+.progress {
+	position:relative;
+	z-index:1;
+}
+
+ul.progress-list {
+    /* display: flex;
+    flex-direction:row; */
+}
+
+ul.progress-list li {
+    position:relative;
+    color: #BBC0C7;
+    display: inline;
+    width:14.28%;
+    text-align: center;
+    float: left;
+}
+
+ul.progress-list li i {
+    width:14px;
+    height: 14px;
+    display: inline-flex;
+    border-radius: 50%;
+    background-color: #BBC0C7;
+    position:absolute;
+    top: 33px;
+    margin-left:-8px;;
+    left:50%;
+}
+
+
+ul.progress-list li span {
+    width:100%;
+    height: 4px;
+    display: inline-block;
+    background-color: #BBC0C7;
+    position: relative;
+    left:50%;
+}
+
+ul.progress-list li p {
+    margin-bottom:16px;
+    font-size: 16px;
+}
+
+ul.progress-list li.active p, ul.progress-list li.end p {
+    color:#2890ec
+}
+
+ul.progress-list li:last-child span{
+    background: #fff;
+    width:0;
+    left:0;
+}
+
+
+
+ul.progress-list li.active, ul.progress-list li.end {
+    color: #37495C;
+}
+
+ul.progress-list li.active span {
+    background-color: #15A3F9;
+}
+
+ul.progress-list li.active i,ul.progress-list li.end em{
+    width:14px;
+    height: 14px;
+    background-color: #15A3F9;
+    top:32px;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    color:#2890ec;  
+    margin-left:-8px;
+}
+ul.progress-list li.end em {
+    background-color:#fff;
+}
+ul.progress-list li.end em svg{
+    font-size:30px;
+    fill: #33CB9B;
+}
+
+ul.progress-list li.end i {
+    width:20px;
+    height: 20px;
+    top:30px;
+    background-color: #15A3F9;
+    
+}
+
+
+.animateRoute{
+    animation:circle 2s infinite ease;
+}
+
+
+
+.progress-branch ul.progress-list li i {
+    top:-5px;
+}
+
+.progress-branch ul.progress-list li.end i {
+    top:-8px;
+}
+
+.progress-branch ul.progress-list li p {
+    margin-top:14px;
+    
+}
+
+.progress-true {
+    position: relative;
+    padding-left:3.1%
+}
+
+.progress-true .progress-list {
+    width:67.36%;
+}
+
+.progress-true .progress-list li {
+    width:12.5%;
+}
+
+.progress-true .start-true,.progress-true .end-true {
+    width: 4px;
+    height: 64px;
+    display: inline-block;
+    background-color: #BBC0C7;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    margin-left: -3px;
+    z-index: 1;
+}
+
+.progress-true .start-true.active {
+    background-color: #15A3F9;
+}
+
+
+.progress-true .progress-list li.active .start-true {
+    background-color: #15A3F9;
+}
+
+/* .progress-true .progress-list li:last-child {
+
+} */
+
+@-webkit-keyframes circle{
+    0%{ transform:rotate(0deg); }
+    100%{ transform:rotate(-360deg); }
+}
+/*è¿›åº¦æ¡end  */
+
+
+.progress-branch,.progress-branch * {
+    box-sizing: border-box;
+}

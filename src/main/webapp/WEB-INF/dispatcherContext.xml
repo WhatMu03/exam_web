@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ 	<mvc:annotation-driven/>
+
+	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
+	<context:component-scan base-package="main.java.controller"/>
+
+	<context:component-scan base-package="main.java.service.Impl"/>
+	
+	<!-- 切面 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<aop:config>
+		<aop:pointcut id="logPointcut"
+			expression="execution(* main.java.controller..*.*(..))" />
+		<aop:aspect id="logAspect" ref="logAspectBean">
+			<aop:after method="after" pointcut-ref="logPointcut" />
+			<aop:after-returning method="afterReturning" pointcut-ref="logPointcut" />
+			<aop:after-throwing method="afterThrowing" pointcut-ref="logPointcut" />
+			<aop:before method="before" pointcut-ref="logPointcut" /> 
+		</aop:aspect>
+	</aop:config>
+	<bean id="logAspectBean" class="main.java.util.Aspect" />
+	<!-- 指定自己定义的validator -->
+	<!--<mvc:annotation-driven validator="validator"/>-->
+
+	<!--&lt;!&ndash; 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册&ndash;&gt;-->
+	<!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
+		<!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->
+		<!--&lt;!&ndash; 如果不加默认到 使用classpath下的 ValidationMessages.properties &ndash;&gt;-->
+		<!--<property name="validationMessageSource" ref="messageSource"/>-->
+	<!--</bean>-->
+
+	<!-- 国际化的消息资源文件（本系统中主要用于显示/错误消息定制） -->
+	<!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+		<!--<property name="basenames">-->
+			<!--<list>-->
+				<!--&lt;!&ndash; 在web环境中一定要定位到classpath 否则默认到当前web应用下找  &ndash;&gt;-->
+				<!--<value>classpath:messages</value>-->
+				<!--<value>classpath:org/hibernate/validator/ValidationMessages</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!--<property name="useCodeAsDefaultMessage" value="false"/>-->
+		<!--<property name="defaultEncoding" value="UTF-8"/>-->
+		<!--<property name="cacheSeconds" value="60"/>-->
+	<!--</bean>-->
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- 多个拦截器,顺序执行 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/static/**"/>
+			<bean class="main.java.interceptor.loginInterceptor">
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- 配置JSP视图 -->
+     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/"/>  
+        <property name="suffix" value=".jsp"/>      
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="order" value="1"/>
+     </bean>
+
+</beans>

@@ -1,0 +1,32 @@
+body>.first-page{
+	margin: 0;
+	height: 100%;
+	position: relative;
+}
+.secondaryMenu{
+	position: absolute;
+    left: 0;
+}
+.first-page{
+	padding-left: 144px;
+}
+.page-message{
+	background-color: #ecf2f6;
+}
+.tc h1{
+	color: #666666;
+	margin: 20px 0;
+}
+.event-submitSuccess > div{
+	padding-top: 8%;
+}
+.public-top{
+	height: 100%;
+	position: relative;
+	padding-top: 45px;
+}
+.main-top{
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IDealingUserDao">  
+    <!-- 查询所有受理人 -->
+    <select id="selectAll" resultType="java.util.Map" parameterType="java.util.Map" >
+        select dealingUserNo,dealingUserName from dealingUser_manage  
+        <where> 
+        	1 = 1
+            <if test="dealingUserNo != null and dealingUserNo != ''">
+                and dealingUserNo = #{dealingUserNo}
+            </if> 
+            <if test="dealingUserName != null and dealingUserName != ''">
+                and dealingUserName = #{dealingUserName}
+            </if> 
+        </where>
+    </select>   
+    
+</mapper>
+
+

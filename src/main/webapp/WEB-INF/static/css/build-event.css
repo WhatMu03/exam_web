@@ -1,0 +1,43 @@
+.build-event .search-area{
+	padding: 70px 70px 0 0;
+}
+.show-w100 label{
+	display: inline-block;
+    width: 11.6%;
+    text-align: right;
+    line-height: 26px;
+    color: #666666;
+}
+.show-w100 input.form-control{
+	width: 88.1%;
+	padding: 6px 0;
+	border: 1px solid #c0cad2;
+}
+.build-event .search-footer{
+	margin: 25px 0 0 11%;
+}
+.search-area .input-3-3{
+	width: 33.333333%;
+	margin-top: 11px;
+}
+.position-re>div{
+	display: inline-block;
+}
+.show-w100{
+	width: 100%;
+}
+.input-3-3 .form-group .input-hastimeIcon input{
+	height: auto;
+}
+.form-group .chosen-container-single .chosen-single{
+	height: 30px;
+}
+.edit-mT{
+	margin-top: 11px;
+}
+.edit-width{
+	width: 87.9%;
+}
+.set-zIndex{
+	z-index: 2;
+}

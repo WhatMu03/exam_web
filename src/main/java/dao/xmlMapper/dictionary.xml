@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.dao.IDictionaryDao"> 
+    <!-- 获取字典事件状态 -->
+    <select id="eventStatus" resultType="java.util.Map">
+   		select item,caption from dictionary where code = 'A00003' and item != '#';  
+    </select>
+    
+    <!-- 获取ts字典事件类型 -->
+    <select id="EVENT_TYPE" resultType="java.util.Map">
+    	select name,value,description from ts_dictionary where dictClassificationCode = 'EVENT_TYPE' and parentId = '-1' 
+    	order by sort
+    </select> 
+    
+    <!-- 获取字典需求状态 -->
+    <select id="requestStatus" resultType="java.util.Map">
+   		select item,caption from dictionary where code = 'A00009' and item != '#';  
+    </select>
+    
+
+</mapper> 
+
+
+

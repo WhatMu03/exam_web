@@ -1,0 +1,50 @@
+.secondaryMenu{
+	z-index: 4;
+}
+.w100{
+	width: 100%;
+}
+.search-area{
+	padding: 60px 60px 0 0;
+}
+.input-3-3{
+	margin-top: 13px;
+}
+.msearch-footer{
+	margin-top: 10px;
+	display: flex;
+	padding: 20px 15px 15px 15px; 
+	justify-content: center;
+}
+.form-group .chosen-container-single .chosen-single{
+	height: 30px;
+	line-height: 30px;
+}
+.pd-lr-35{
+	padding: 0 35px;
+}
+.pagination{
+	width: 100%;
+}
+.main-top{
+	position: fixed;
+	z-index: 3;
+}
+.pd-T-45{
+	padding-top: 45px;
+}
+.pd-lr-35{
+	padding: 0 35px;
+}
+.chosen-zIndex{
+	z-index: 2;
+}
+.input-3-3 .position-re .input-hastimeIcon-selection input{
+	width: 100%;
+	padding-right: 26px;
+	line-height: 28px;
+	padding-left:10px;
+}
+
+.datagrid-btable td div{white-space: nowrap !important;  line-height: 18px;}
+

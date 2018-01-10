@@ -1,0 +1,144 @@
+.hxcrltable {
+	border: 1px solid #e3e3e3;
+	font-family: "微软雅黑";
+	color: #333333;
+	width: 100%;
+	/* max-width:545px; */
+	border-radius: 4px;
+	border-top: none;
+	background: #fff;
+}
+
+.hxcrltable tr th {
+	color: #666;
+}
+
+.hxcrltable td, .hxcrltable tr th {
+	width: 14.28%;
+	height: 40px;
+	text-align: center;
+	cursor: default;
+	font-weight: normal;
+	position: relative;
+	overflow: inherit;
+}
+
+.hxcrltable td span {
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	line-height: 24px;
+	cursor: pointer
+}
+
+.hxcrltable td.active span {
+	background-color: #25bcc7;
+	color: #fff;
+	border-radius: 50%;
+}
+
+/* .hxcrltable td span:hover,.hxcrltable td.cur span{
+    background-color:#00BDFF;
+    color:#fff;
+    border-radius: 50%;
+    border:none;
+} */
+
+/* 
+.hxcrltable tr:first-child td,
+.hxcrltable tr:first-child td span {
+    height: 40px!important;
+    background-color: #6f524a;
+    border: none;
+    color: white;
+}
+*/
+.dateHeader {
+	width: 100%;
+	height: 41px;
+	background: url('/kfxt/static/images/table-bj.png') repeat-x;
+	color: #fff;
+	overflow: hidden;
+	padding: 18px 0;
+}
+
+.dateHeader .weekDay {
+	width: 41%;
+	float: left;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 700;
+	text-shadow: 1px 1px 4px rgba(124, 124, 124, .6);
+	border-right: 1px solid #fff;
+}
+
+.dateHeader .weekDay .day {
+	font-size: 40px;
+	text-shadow: 1px 1px 4px rgba(124, 124, 124, .6);
+	margin-right: 5px;
+}
+
+.dateHeader .yearDate {
+	width: 58%;
+	float: right;
+	font-size: 20px;
+	text-align: center;
+	line-height: 41px;
+}
+
+.dateHeader .yearDate>span.btnLeft i, .dateHeader .yearDate>span.btnRight i
+	{
+	font-size: 20px;
+}
+
+.dateHeader .yearDate .yearDateCont {
+	margin: 0 20px;
+}
+
+.cPointer {
+	cursor: pointer
+}
+
+.hxcrltable .b-b-s {
+	border-bottom: 2px solid #00BDFF;
+}
+
+.dataFixed {
+	min-width: 170px;
+	padding: 12px;
+	box-shadow: 1px 0 4px #9d9b9b;
+	border-radius: 4px;
+	position: absolute;
+	z-index: 99;
+	background: #fff;
+	top: -40px;
+	left: 40px;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.dataFixed ul li {
+	line-height: 1.5;
+	text-align: left;
+	position: relative
+}
+
+.dataFixed ul li::before {
+	content: " ";
+	width: 6px;
+	height: 6px;
+	display: inline-block;
+	background-color: #2890ec;
+	border-radius: 50%;
+	position: absolute;
+	left: -2px;
+	top: 10px;
+}
+
+.dataFixed ul li a {
+	margin: 0;
+	font-size: 12px;
+	text-decoration: none;
+	padding-left: 12px;
+	display: inline-block;
+}

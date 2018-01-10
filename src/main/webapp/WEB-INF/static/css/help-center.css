@@ -1,0 +1,128 @@
+body>.first-register {
+   	margin: 0;
+    /*padding-top: 45px;*/
+    position: relative;
+    height: 100%;
+}
+.register-main {
+    height: 100%;
+    position: relative;
+    padding-left: 215px;
+    box-sizing: border-box;
+}
+.set-help-padding{
+	padding: 15px;
+	background-color: #ecf2f6;
+	height: 100%;
+}
+.register-tip {
+    height: 100%;
+    background-color: #fff;
+    padding: 80px 100px;
+}
+.tip-title {
+    border-bottom: 1px solid #e4e6ea;
+    padding: 15px;
+    font-size: 14px;
+}
+.help-center{
+	background-color: #d8dee6;
+	width: 215px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+}
+.help-center h2{
+	height: 60px;
+	padding-left: 30px;
+	line-height: 60px;
+	font-size: 16px;
+}
+.help-center ul i{
+	font-size: 20px;
+	display: inline-block;
+	margin-right: 10px;
+}
+.help-center ul li{
+	display: block;
+	height: 35px;
+	padding-left: 47px;
+	line-height: 35px;
+	color: #627189;
+}
+.help-center ul li.current{
+	background-color: #ecf2f6;
+	border-left: 2px solid #2890ec;
+	color: #2890ec;
+}
+.search-tip{
+	padding: 20px 17px 17px 37px;
+	border-bottom: 1px solid #e4e6ea;
+	color: #999999;
+	position: absolute;
+	top: 45px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.search-result{
+	width: 100%;
+	background-color: #fff;
+	height: 100%;
+	position: relative;
+	padding-top: 102px;
+	box-sizing: border-box;
+	padding-bottom: 54px;
+}
+.set-search-tip{
+	position: absolute;
+	width: 100%;
+    top: 0;
+    left: 0;
+}
+.searchInput{
+	display: inline-block;
+	position: absolute;
+	right: 37px;
+	bottom: 10px;
+	padding-left: 25px;
+}
+.search-details{
+	padding: 0px 37px;
+	height: 100%;
+	overflow: auto;
+	box-sizing: border-box;
+}
+.search-details .required-solved{
+	width: 100%;
+	padding: 5px 0 15px 0;
+}
+.w100{
+	width: 100%;
+}
+.search-tip .searchInput input{
+	border: none;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px 10px;
+}
+.hot-unscramble span .icon-bangzhuzhongxin-1{
+	padding: 0;
+	background-color: #fff;
+	color: #33cccc;
+	border: none;
+	line-height: normal;
+	font-size: 22px;
+	display: inline-block;
+	margin-left: 8px;
+}
+.hot-unscramble span .icon-changjianwenti{
+	padding: 0;
+	background-color: #fff;
+	color: #33cc99;
+	border: none;
+	line-height: normal;
+	font-size: 18px;
+	display: inline-block;
+	margin-left: 8px;
+}
